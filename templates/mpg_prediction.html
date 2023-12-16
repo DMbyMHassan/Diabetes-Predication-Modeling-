@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>MPG Prediction</title>
+</head>
+<body>
+    <h1>MPG Prediction</h1>
+    <form method="post">
+        <label for="cylinders">Cylinders:</label>
+        <input type="number" id="cylinders" name="cylinders" required>
+
+        <label for="horsepower">Horsepower:</label>
+        <input type="number" id="horsepower" name="horsepower" step="0.01" required>
+
+        <label for="weight">Weight:</label>
+        <input type="number" id="weight" name="weight" required>
+
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" required>
+
+
+        <label for="origin_usa">Origin USA:</label>
+        <input type="checkbox" id="origin_usa" name="origin_usa">
+
+        <label for="origin_japan">Origin Japan:</label>
+        <input type="checkbox" id="origin_japan" name="origin_japan">
+
+        <button type="submit">Predict MPG</button>
+    </form>
+
+    {% if prediction is defined %}
+        <h2>Prediction:</h2>
+        <p>{{ prediction }}</p>
+    {% endif %}
+
+    {% if error_message is defined %}
+        <h2>Error:</h2>
+        <p>{{ error_message }}</p>
+    {% endif %}
+</body>
+</html>

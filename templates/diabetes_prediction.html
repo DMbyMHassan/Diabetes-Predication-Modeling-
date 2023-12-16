@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Diabetes Prediction</title>
+</head>
+<body>
+    <h1>Diabetes Prediction</h1>
+    <form method="post">
+        <label for="DiabetesPedigreeFunction">Diabetes Pedigree Function:</label>
+        <input type="number" id="DiabetesPedigreeFunction" name="dpf" step="0.01" required>
+
+        <label for="BMI">BMI:</label>
+        <input type="number" id="BMI" name="BMI" step="0.1" required>
+
+        <label for="Age">Age (in years):</label>
+        <input type="number" id="Age" name="Age" required>
+
+        <label for="Pregnancies">Number of Pregnancies:</label>
+        <input type="number" id="Pregnancies" name="Pregnancies" required>
+
+        <label for="BloodPressure">Blood Pressure Systolic:</label>
+        <input type="number" id="BloodPressure" name="BloodPressure" required>
+
+        <label for="Insulin">Insulin Level:</label>
+        <input type="number" id="Insulin" name="Insulin" required>
+
+        <label for="Glucose">Glucose Level:</label>
+        <input type="number" id="Glucose" name="Glucose" required>
+
+        <button type="submit">Predict Diabetes</button>
+    </form>
+
+    {% if prediction is defined %}
+        <h2>Prediction:</h2>
+        <p>{{ prediction }}</p>
+    {% endif %}
+
+    {% if error_message is defined %}
+        <h2>Error:</h2>
+        <p>{{ error_message }}</p>
+    {% endif %}
+</body>
+</html>
